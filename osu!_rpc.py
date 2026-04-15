@@ -25,7 +25,7 @@ def get_osu_token():
     return response.json().get('access_token')
 
 def get_osu_data(token):
-    url = f'https://osu.ppy.sh/api/v2/users/{OSU_USERNAME}/osu'
+    url = f'https://osu.ppy.sh/api/v2/users/{OSU_USERNAME}/mania'
     headers = {'Authorization': f'Bearer {token}'}
     response = requests.get(url, headers=headers)
     return response.json()
@@ -52,7 +52,7 @@ def main():
             rpc.update(
                 state=f"Rank: #{rank:,} | {pp}pp",
                 details=f"Accuracy: {acc}%",
-                large_image="osu_logo",
+                large_image="osu",
                 large_text=f"Total Playtime: {stats['play_time'] // 3600} hours"
             )
             
